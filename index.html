@@ -1,0 +1,518 @@
+<title>รับสร้างโกดัง ภูเก็ต</title>
+<meta name="description" content="WAREHOUSE BUILDER — รับสร้างโกดัง โรงงาน อาคารโครงสร้างเหล็ก ภูเก็ต พังงา กระบี่ สุราษฎร์ นครศรีฯ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Bai+Jamjuree:wght@600;700&display=swap">
+<style>
+  :root{
+    --ink:#0d0e11;
+    --ground:#f6f5f3;
+    --surface:#ffffff;
+    --surface-2:#efedea;
+    --line:#dcd8d2;
+    --text:#1a1b1f;
+    --text-soft:#5c5f66;
+    --lava:#e01f26;
+    --lava-deep:#b1141a;
+    --ember:#ff6a2b;
+    --steel:#8a919b;
+    --gold:#d9a441;
+    --hero-ink:#0b0c0f;
+    --hero-text:#f4f2ee;
+    --hero-soft:#a7adb6;
+    --hero-line:rgba(255,255,255,.12);
+    --hero-card:#16181d;
+    --shadow:0 18px 50px -24px rgba(0,0,0,.35);
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme:dark){
+      --ground:#111216;
+      --surface:#181a1f;
+      --surface-2:#1f2228;
+      --line:#2b2f36;
+      --text:#f0efec;
+      --text-soft:#9aa0a9;
+      --steel:#9aa1ab;
+      --shadow:0 20px 55px -26px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#111216;
+    --surface:#181a1f;
+    --surface-2:#1f2228;
+    --line:#2b2f36;
+    --text:#f0efec;
+    --text-soft:#9aa0a9;
+    --steel:#9aa1ab;
+    --shadow:0 20px 55px -26px rgba(0,0,0,.7);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--text);
+    font-family:"IBM Plex Sans Thai",system-ui,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Kanit",system-ui,sans-serif;font-weight:700;line-height:1.1;text-wrap:balance;margin:0}
+  .num{font-family:"Bai Jamjuree","Kanit",sans-serif;font-variant-numeric:tabular-nums}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin-inline:auto;padding-inline:20px}
+  .eyebrow{font-family:"Kanit",sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lava)}
+
+  /* ---------- top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--ground) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:16px;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:"Kanit";font-weight:800;letter-spacing:.02em}
+  .mark{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    background:radial-gradient(circle at 32% 28%,#2a2c31,#0c0d10);border:1.5px solid var(--lava);
+    box-shadow:0 0 0 2px rgba(0,0,0,.35),inset 0 0 12px rgba(255,106,43,.28)}
+  .lk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;line-height:0}
+  .lk .roof{width:58%;height:auto;display:block}
+  .mark svg{width:20px;height:20px}
+  .logo-ic{width:34px;height:34px;flex:0 0 auto;display:block}
+  .logo-ic svg{width:100%;height:100%;display:block}
+  .sc-logo-cover .logo-ic{width:38%;height:auto;max-width:72px;margin-bottom:5px}
+  .brand b{font-size:1.06rem}
+  .brand b{white-space:nowrap}
+  .brand span{font-size:.66rem;letter-spacing:.16em;color:var(--gold);display:block;margin-top:-2px;font-weight:600;white-space:nowrap}
+  .topbar .spacer{flex:1}
+  .top-tel{display:inline-flex;align-items:center;gap:8px;font-family:"Bai Jamjuree";font-weight:700;
+    color:var(--text);text-decoration:none;font-size:1.02rem}
+  .top-tel .dot{width:9px;height:9px;border-radius:50%;background:var(--lava);box-shadow:0 0 0 4px color-mix(in srgb,var(--lava) 24%,transparent)}
+  .themebtn{margin-left:4px;border:1px solid var(--line);background:var(--surface);color:var(--text-soft);
+    width:38px;height:38px;border-radius:9px;cursor:pointer;font-size:1rem;line-height:1}
+  .themebtn:hover{color:var(--text)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;color:var(--hero-text);background:var(--hero-ink);overflow:hidden;
+    border-bottom:3px solid var(--lava)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 80% at 78% -10%,rgba(255,106,43,.42),transparent 55%),
+      radial-gradient(90% 70% at 12% 108%,rgba(224,31,38,.34),transparent 60%),
+      linear-gradient(180deg,#0a0b0e,#101217 60%,#0c0d10);
+  }
+  .hero::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+    background:repeating-linear-gradient(115deg,transparent 0 38px,rgba(255,255,255,.045) 38px 39px)}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
+    align-items:center;padding-block:66px 60px}
+  .hero .eyebrow{color:var(--ember)}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);font-weight:800;letter-spacing:-.01em;margin:14px 0 8px}
+  .hero h1 .lava{color:transparent;background:linear-gradient(100deg,#ff8a3d,#e01f26 70%);-webkit-background-clip:text;background-clip:text}
+  .hero .lead{color:var(--hero-soft);font-size:1.13rem;max-width:46ch;margin:0 0 26px}
+  .tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:30px}
+  .tag{font-family:"Kanit";font-weight:500;font-size:.9rem;padding:7px 13px;border-radius:999px;
+    background:var(--hero-card);border:1px solid var(--hero-line);color:#e7e5e1;display:inline-flex;gap:7px;align-items:center}
+  .tag i{color:var(--ember);font-style:normal}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{font-family:"Kanit";font-weight:600;font-size:1.02rem;padding:14px 24px;border-radius:12px;
+    text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:1px solid transparent;transition:transform .12s,box-shadow .12s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:linear-gradient(180deg,#f0272e,#c0161c);color:#fff;box-shadow:0 12px 30px -12px rgba(224,31,38,.75)}
+  .btn-primary:hover{box-shadow:0 16px 38px -12px rgba(224,31,38,.9)}
+  .btn-ghost{background:rgba(255,255,255,.06);border-color:var(--hero-line);color:#f2f0ec}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* hero specimen card */
+  .spec{background:linear-gradient(180deg,#191b20,#111318);border:1px solid var(--hero-line);
+    border-radius:20px;padding:22px;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+  .spec h3{font-family:"Kanit";font-weight:600;font-size:1rem;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:16px}
+  .spec h3 .pin{width:7px;height:18px;border-radius:2px;background:linear-gradient(var(--ember),var(--lava))}
+  .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hero-line);border-radius:12px;overflow:hidden}
+  .spec-cell{background:#14161b;padding:14px 15px}
+  .spec-cell .k{font-size:.78rem;color:var(--hero-soft)}
+  .spec-cell .v{font-family:"Bai Jamjuree";font-weight:700;font-size:1.5rem;color:#fff;margin-top:2px}
+  .spec-cell .v small{font-family:"IBM Plex Sans Thai";font-weight:500;font-size:.82rem;color:var(--ember)}
+  .spec-foot{margin-top:14px;font-size:.84rem;color:var(--hero-soft);display:flex;align-items:center;gap:8px}
+  .badge-mok{font-family:"IBM Plex Sans Thai",sans-serif;font-weight:600;font-size:.78rem;color:#0b0c0f;
+    background:var(--gold);padding:4px 9px;border-radius:6px}
+
+  /* ---------- section frame ---------- */
+  section{padding-block:64px}
+  .sec-head{max-width:60ch;margin-bottom:36px}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin:10px 0 8px}
+  .sec-head p{color:var(--text-soft);margin:0;font-size:1.06rem}
+
+  /* ---------- products ---------- */
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .prod{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 18px 18px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .prod::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--ember),var(--lava));opacity:.85}
+  .prod .ico{width:44px;height:44px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;margin-bottom:14px}
+  .prod .ico svg{width:26px;height:26px;color:var(--lava)}
+  .prod h3{font-family:"Kanit";font-weight:600;font-size:1.12rem}
+  .prod .code{font-family:"Bai Jamjuree";font-weight:600;font-size:.78rem;color:var(--steel);letter-spacing:.06em;margin-top:3px}
+  .prod p{font-size:.92rem;color:var(--text-soft);margin:9px 0 0}
+
+  /* ---------- why strip ---------- */
+  .why{background:var(--surface);border-block:1px solid var(--line)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .why-cell{padding:34px 26px;border-left:1px solid var(--line)}
+  .why-cell:first-child{border-left:0}
+  .why-cell .n{font-family:"Kanit",sans-serif;font-weight:700;font-size:2.4rem;color:var(--lava);line-height:1}
+  .why-cell h3{font-family:"Kanit";font-weight:600;font-size:1.08rem;margin:10px 0 6px}
+  .why-cell p{margin:0;font-size:.92rem;color:var(--text-soft)}
+
+  /* ---------- project pricing ---------- */
+  .project{background:var(--hero-ink);color:var(--hero-text);position:relative;overflow:hidden;border-block:3px solid var(--lava)}
+  .project::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(80% 120% at 100% 0,rgba(255,106,43,.3),transparent 55%),
+    radial-gradient(70% 100% at 0 100%,rgba(224,31,38,.28),transparent 60%)}
+  .project .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .project .eyebrow{color:var(--ember)}
+  .project h2{font-size:clamp(1.9rem,4vw,2.9rem);color:#fff;margin:12px 0 14px}
+  .project h2 em{font-style:normal;color:transparent;background:linear-gradient(100deg,#ff8a3d,#e01f26);-webkit-background-clip:text;background-clip:text}
+  .project p{color:var(--hero-soft);font-size:1.08rem;max-width:44ch}
+  .steps{display:grid;gap:12px}
+  .step{display:flex;gap:16px;align-items:flex-start;background:var(--hero-card);border:1px solid var(--hero-line);
+    border-radius:14px;padding:18px 20px}
+  .step .s-n{font-family:"Bai Jamjuree";font-weight:700;font-size:1.15rem;color:#0b0c0f;background:var(--ember);
+    width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto}
+  .step h4{font-family:"Kanit";font-weight:600;font-size:1.05rem;color:#fff;margin:2px 0 3px}
+  .step p{margin:0;font-size:.9rem;color:var(--hero-soft)}
+
+  /* ---------- coverage ---------- */
+  .cover-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+  .zones{display:flex;flex-wrap:wrap;gap:10px}
+  .zone{font-family:"Kanit";font-weight:600;font-size:1.02rem;padding:12px 18px;border-radius:11px;
+    border:1px solid var(--line);background:var(--surface);display:flex;align-items:center;gap:10px}
+  .zone .pin{color:var(--lava)}
+  .pay{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+  .pay h3{font-family:"Kanit";font-weight:700;font-size:1.25rem;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .pay h3 svg{width:24px;height:24px;color:var(--lava)}
+  .pay p{color:var(--text-soft);margin:0 0 16px;font-size:.96rem}
+  .cards{display:flex;gap:8px}
+  .cc{height:34px;width:54px;border-radius:6px;position:relative;box-shadow:0 6px 14px -8px rgba(0,0,0,.5)}
+  .cc::after{content:"";position:absolute;left:7px;top:11px;width:11px;height:9px;border-radius:2px;background:rgba(255,255,255,.55)}
+  .cc.k{background:linear-gradient(135deg,#2b2d31,#0d0e11)}
+  .cc.b{background:linear-gradient(135deg,#1d4ed8,#0b2a73)}
+  .cc.g{background:linear-gradient(135deg,#e6be55,#b8892b)}
+  .cc.s{background:linear-gradient(135deg,#d7dbe0,#9aa0a9)}
+  .pay small{display:block;margin-top:14px;color:var(--steel);font-size:.8rem}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--surface);border-top:1px solid var(--line)}
+  .contact .wrap{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+  .contact h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:8px}
+  .contact p{color:var(--text-soft);margin:0;max-width:48ch}
+  .call-card{background:linear-gradient(180deg,#f0272e,#bf151b);color:#fff;border-radius:18px;padding:26px 30px;
+    text-align:center;box-shadow:0 24px 50px -22px rgba(224,31,38,.6);min-width:280px}
+  .call-card .lab{font-family:"Kanit";font-weight:500;font-size:.9rem;opacity:.9;letter-spacing:.04em}
+  .call-card .tel{font-family:"Bai Jamjuree";font-weight:700;font-size:2.35rem;letter-spacing:.01em;margin:4px 0 14px;color:#fff;text-decoration:none;display:block}
+  .call-card .mini{display:flex;gap:8px;justify-content:center}
+  .call-card .mini a{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;
+    padding:9px 16px;border-radius:10px;text-decoration:none;font-family:"Kanit";font-weight:600;font-size:.92rem}
+  .call-card .mini a:hover{background:rgba(255,255,255,.26)}
+
+  footer{background:var(--hero-ink);color:var(--hero-soft);padding-block:34px;border-top:3px solid var(--lava)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+  footer .brand b{color:#fff}
+  footer .fine{font-size:.85rem}
+
+  /* ---------- video showcase ---------- */
+  .showcase{background:var(--hero-ink);border-block:3px solid var(--lava);padding-block:56px}
+  .showcase .sc-head{max-width:60ch;margin-bottom:24px}
+  .showcase .eyebrow{color:var(--ember)}
+  .showcase .sc-head h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.5rem);margin:10px 0 6px}
+  .showcase .sc-head p{color:var(--hero-soft);margin:0;font-size:1.06rem}
+  .sc-frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--hero-line);
+    box-shadow:0 44px 90px -50px #000;aspect-ratio:16/9;background:#000;max-width:100%}
+  .sc-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .sc-cap{position:absolute;left:0;right:0;bottom:0;padding:56px 26px 22px;
+    background:linear-gradient(transparent,rgba(6,7,9,.9));display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-end;justify-content:space-between}
+  .sc-cap b{font-family:"Kanit";font-weight:600;font-size:clamp(1.05rem,2.4vw,1.5rem);color:#fff;max-width:26ch}
+  .sc-logo-cover{position:absolute;top:0;left:0;height:33%;aspect-ratio:1;border-radius:50%;z-index:3;
+    background:radial-gradient(circle at 34% 30%,#2a2c31,#0b0c0f 78%);border:2px solid var(--lava);
+    box-shadow:0 4px 16px rgba(0,0,0,.55),inset 0 0 22px rgba(255,106,43,.22);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;overflow:hidden}
+  .sc-logo-cover svg{width:36%;height:auto;max-width:54px}
+  .sc-logo-cover .wm-txt{font-family:"Kanit";font-weight:700;font-size:clamp(.4rem,1.6vw,.7rem);
+    letter-spacing:.05em;color:#fff;line-height:1.05}
+  .sc-live{display:inline-flex;align-items:center;gap:9px;font-family:"Kanit";font-weight:600;font-size:.82rem;
+    letter-spacing:.06em;color:#fff;background:rgba(224,31,38,.9);padding:7px 13px;border-radius:999px;white-space:nowrap}
+  .sc-live .dot{width:8px;height:8px;border-radius:50%;background:#fff}
+
+  /* ---------- real-photo gallery ---------- */
+  .gal-strip{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:16px}
+  .gal-strip img{width:100%;height:auto;display:block}
+  .gal-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .gal-card{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:var(--shadow);aspect-ratio:16/10;background:var(--surface-2)}
+  .gal-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .gal-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 13px;color:#fff;
+    font-family:"Kanit";font-weight:600;font-size:1.02rem;
+    background:linear-gradient(transparent,rgba(6,7,9,.85));display:flex;align-items:center;gap:9px}
+  .gal-card figcaption i{width:7px;height:18px;border-radius:2px;background:linear-gradient(var(--ember),var(--lava));flex:0 0 auto}
+
+  @media (max-width:880px){
+    .hero .wrap,.project .wrap,.cover-grid,.contact .wrap{grid-template-columns:1fr}
+    .prod-grid{grid-template-columns:1fr 1fr}
+    .why-grid{grid-template-columns:1fr 1fr}
+    .why-cell{border-left:0;border-top:1px solid var(--line)}
+    .why-cell:nth-child(-n+2){border-top:0}
+    .why-cell:nth-child(even){border-left:1px solid var(--line)}
+  }
+  @media (max-width:520px){
+    .prod-grid,.why-grid,.gal-2{grid-template-columns:1fr}
+    .why-cell:nth-child(even){border-left:0}
+    .top-tel span{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  :focus-visible{outline:2px solid var(--lava);outline-offset:2px;border-radius:6px}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M4 14.5 L16 5 L28 14.5" stroke="#e01f26" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 13.5 V27 H25.5 V13.5" stroke="#e01f26" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 27 V19 H20 V27" stroke="#ff6a2b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div><b>WAREHOUSE BUILDER</b><span>รับสร้างโกดัง · ภูเก็ต</span></div>
+    </div>
+    <div class="spacer"></div>
+    <a class="top-tel" href="tel:0944545516"><span class="dot"></span><span>โทรปรึกษางาน</span>094-454-5516</a>
+    <button class="themebtn" id="themeBtn" aria-label="สลับธีมสว่าง/มืด">◐</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Build Stronger Together</div>
+      <h1>รับสร้าง<span class="lava">โกดัง</span><br>โรงงาน อาคารเหล็ก</h1>
+      <p class="lead">ออกแบบและสร้างโกดัง คลังสินค้า โรงงาน อาคารโครงสร้างเหล็ก ครบวงจร — มีโรงเหล็กเป็นของตัวเอง วัสดุมาตรฐาน มอก. คุมงบ คุมเวลา จบในทีมเดียว</p>
+      <div class="tags">
+        <span class="tag"><i>✚</i> โกดัง / คลังสินค้า</span>
+        <span class="tag"><i>✚</i> โรงงาน</span>
+        <span class="tag"><i>✚</i> โครงสร้างเหล็ก</span>
+        <span class="tag"><i>✚</i> หลังคาเมทัลชีท</span>
+        <span class="tag"><i>✚</i> ต่อเติมอาคาร</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:0944545516">📞 โทรปรึกษาฟรี 094-454-5516</a>
+        <a class="btn btn-ghost" href="#products">ดูบริการทั้งหมด</a>
+      </div>
+    </div>
+    <aside class="spec" aria-label="พื้นที่จัดส่งและมาตรฐาน">
+      <h3><span class="pin"></span>รับงานทั่วภาคใต้</h3>
+      <div class="spec-grid">
+        <div class="spec-cell"><div class="k">พื้นที่รับงาน</div><div class="v num">5 <small>จังหวัด</small></div></div>
+        <div class="spec-cell"><div class="k">สายด่วนปรึกษางาน</div><div class="v num">094 <small>454-5516</small></div></div>
+        <div class="spec-cell"><div class="k">รับงานโครงการ</div><div class="v" style="font-family:'Kanit',sans-serif">ทุก <small>ขนาด</small></div></div>
+        <div class="spec-cell"><div class="k">ผ่อนชำระ</div><div class="v num">0% <small>บัตรร่วมรายการ</small></div></div>
+      </div>
+      <div class="spec-foot"><span class="badge-mok">มอก.</span> วัสดุเหล็กได้รับรองมาตรฐานอุตสาหกรรม</div>
+    </aside>
+  </div>
+</section>
+
+<!-- VIDEO SHOWCASE -->
+<section class="showcase">
+  <div class="wrap">
+    <div class="sc-head">
+      <div class="eyebrow">วัสดุจริง · หน้างานจริง</div>
+      <h2>เหล็กโครงสร้างมาตรฐาน มอก. จากโรงเราเอง</h2>
+      <p>เหล็กกล่อง เหล็กรูปพรรณ คัดคุณภาพ พร้อมส่งตรงถึงไซต์งานก่อสร้างโกดัง</p>
+    </div>
+    <div class="sc-frame">
+      <video poster="warehouse-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="วิดีโอเหล็กโครงสร้างในโกดัง">
+        <source src="warehouse-web.mp4" type="video/mp4">
+      </video>
+      <div class="sc-cap">
+        <b>เหล็กครบ พร้อมลงงาน — คุมคุณภาพตั้งแต่วัสดุ</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">บริการของเรา</div>
+      <h2>รับสร้างครบวงจร ตั้งแต่ออกแบบถึงส่งมอบ</h2>
+      <p>งานโครงสร้างเหล็กทุกประเภท ทีมช่างมืออาชีพ วัสดุมาตรฐาน มอก. คุมงบคุมเวลาชัดเจน</p>
+    </div>
+    <div class="prod-grid">
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-5h6v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>โกดัง / คลังสินค้า</h3>
+        <div class="code num">WAREHOUSE</div>
+        <p>สร้างโกดังเก็บสินค้า คลังกระจายสินค้า ทุกสเปนช่วงเสา ทุกขนาดพื้นที่</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21V10l5 3V8l5 3V6l5 3v12H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>โรงงาน</h3>
+        <div class="code num">FACTORY</div>
+        <p>อาคารโรงงานผลิต รองรับเครื่องจักร งานระบบ พร้อมใช้งาน</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12l10-7 10 7M5 10v9h14v-9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>โรงจอดรถ / โรงเรือน</h3>
+        <div class="code num">STEEL SHED</div>
+        <p>โรงจอดรถ โรงเรือนเกษตร โครงหลังคาคลุมพื้นที่ ติดตั้งไว</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14M5 20h14M12 4v16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+        <h3>งานโครงสร้างเหล็ก</h3>
+        <div class="code num">STEEL STRUCTURE</div>
+        <p>เสา คาน H-Beam/I-Beam งานเชื่อมประกอบ ได้มาตรฐานวิศวกรรม</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 14l9-8 9 8M3 14l0 0M6 12v7h12v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>หลังคาเมทัลชีท</h3>
+        <div class="code num">METAL ROOF</div>
+        <p>มุงเมทัลชีท ฉนวนกันความร้อน รางน้ำ ครบจบงานหลังคา</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="16" width="18" height="4" stroke="currentColor" stroke-width="1.6"/><path d="M6 16v-4h12v4M9 12V8h6v4" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>งานพื้นคอนกรีต</h3>
+        <div class="code num">CONCRETE FLOOR</div>
+        <p>เทพื้นโรงงาน พื้นรับน้ำหนัก ขัดมันเรียบ รองรับรถโฟล์คลิฟท์</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V8h8v12M12 20V4h8v16M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>ต่อเติม / ปรับปรุง</h3>
+        <div class="code num">EXTENSION</div>
+        <p>ต่อเติมโกดัง ขยายพื้นที่ ปรับปรุงอาคารเดิม ซ่อมหลังคา</p>
+      </article>
+      <article class="prod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="18" cy="17" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>ออกแบบ / เขียนแบบ</h3>
+        <div class="code num">DESIGN · BOQ</div>
+        <p>ออกแบบโครงสร้าง เขียนแบบ คำนวณราคา BOQ ก่อนเริ่มงาน</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">สินค้า & วัสดุจริง</div>
+      <h2>เหล็กคุณภาพ พร้อมลงงานก่อสร้างโกดัง</h2>
+      <p>ภาพจริงจากคลัง — เหล็กรูปพรรณครบชนิด คัดคุณภาพ มาตรฐาน มอก. ทุกเส้น</p>
+    </div>
+    <figure class="gal-strip">
+      <img src="steel-types-strip.jpg" alt="เหล็กเส้น RB/DB, H-BEAM/I-BEAM, เหล็กกล่อง GI/ดำ, เหล็กฉาก เหล็กแบน เหล็กเพลา" loading="lazy">
+    </figure>
+    <div class="gal-2">
+      <figure class="gal-card">
+        <img src="steel-boxes.jpg" alt="เหล็กกล่องพร้อมส่งในคลัง" loading="lazy">
+        <figcaption><i></i>เหล็กกล่องพร้อมส่งถึงไซต์งาน</figcaption>
+      </figure>
+      <figure class="gal-card">
+        <img src="steel-hero.jpg" alt="เหล็กกล่อง H-Beam และเหล็กเส้นคุณภาพ" loading="lazy">
+        <figcaption><i></i>เหล็กโครงสร้างครบชนิด คุณภาพมาตรฐาน</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap" style="padding-inline:0">
+    <div class="wrap sec-head" style="padding-inline:20px">
+      <div class="eyebrow">ทำไมต้องเลือกเรา</div>
+      <h2>เหล็กดี งานเดินต่อ ไม่เสียเวลา</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-cell"><div class="n num">มอก.</div><h3>วัสดุได้มาตรฐาน</h3><p>เหล็กจากโรงเราเอง ผ่านรับรองมาตรฐานอุตสาหกรรม มั่นใจทุกโครงสร้าง</p></div>
+      <div class="why-cell"><div class="n num">1</div><h3>จบครบในทีมเดียว</h3><p>ออกแบบ โครงสร้าง หลังคา พื้น จบในผู้รับเหมาเดียว ไม่ต้องหาหลายเจ้า</p></div>
+      <div class="why-cell"><div class="n num">BOQ</div><h3>ราคาชัด คุมงบได้</h3><p>ตีราคาตาม BOQ ก่อนเริ่มงาน ไม่บวกเพิ่มกลางทาง งานตรงสเปก</p></div>
+      <div class="why-cell"><div class="n num">✓</div><h3>ส่งงานตรงเวลา</h3><p>วางแผนงานเป็นเฟส คุมคิวช่าง งานเดินต่อเนื่อง ส่งมอบตามสัญญา</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT PRICING -->
+<section class="project">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">ขั้นตอนการทำงาน</div>
+      <h2>เริ่มสร้างโกดัง <em>ง่ายใน 4 ขั้น</em></h2>
+      <p>ตั้งแต่ปรึกษาหน้างานถึงส่งมอบพร้อมใช้ ทุกขั้นตอนมีทีมงานดูแล แจ้งความคืบหน้าชัดเจน</p>
+      <div class="cta-row" style="margin-top:24px">
+        <a class="btn btn-primary" href="tel:0944545516">ขอใบเสนอราคา</a>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="s-n num">1</div><div><h4>ปรึกษา & สำรวจหน้างาน</h4><p>โทรนัดเข้าดูพื้นที่จริง ประเมินความต้องการและงบประมาณ</p></div></div>
+      <div class="step"><div class="s-n num">2</div><div><h4>ออกแบบ & เสนอราคา BOQ</h4><p>เขียนแบบโครงสร้าง สรุปราคาชัดเจน ก่อนตกลงเริ่มงาน</p></div></div>
+      <div class="step"><div class="s-n num">3</div><div><h4>ก่อสร้างตามแผน</h4><p>ลงเสาเข็ม โครงเหล็ก หลังคา พื้น คุมคุณภาพทุกเฟส</p></div></div>
+      <div class="step"><div class="s-n num">4</div><div><h4>ตรวจรับ & ส่งมอบ</h4><p>ตรวจงานร่วมกัน ส่งมอบพร้อมใช้งาน มีรับประกันงาน</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE + PAYMENT -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">พื้นที่ให้บริการ & การชำระเงิน</div>
+      <h2>รับงานทั่วภาคใต้ ผ่อนชำระได้</h2>
+    </div>
+    <div class="cover-grid">
+      <div>
+        <p style="color:var(--text-soft);margin:0 0 16px">รับสร้างและติดตั้งถึงหน้างาน ครอบคลุมพื้นที่</p>
+        <div class="zones">
+          <span class="zone"><span class="pin">◆</span>ภูเก็ต</span>
+          <span class="zone"><span class="pin">◆</span>พังงา</span>
+          <span class="zone"><span class="pin">◆</span>กระบี่</span>
+          <span class="zone"><span class="pin">◆</span>สุราษฎร์ธานี</span>
+          <span class="zone"><span class="pin">◆</span>นครศรีธรรมราช</span>
+        </div>
+      </div>
+      <div class="pay">
+        <h3><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.7"/></svg>ผ่อนชำระได้</h3>
+        <p>รับบัตรเครดิตที่ร่วมรายการ แบ่งจ่ายเป็นงวดตามเนื้องาน ให้โครงการเดินหน้าไม่สะดุด</p>
+        <div class="cards" aria-hidden="true">
+          <span class="cc k"></span><span class="cc b"></span><span class="cc g"></span><span class="cc s"></span>
+        </div>
+        <small>* เงื่อนไขเป็นไปตามที่ธนาคารกำหนด</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">ติดต่อรับงาน</div>
+      <h2>อยากสร้างโกดัง เริ่มที่โทรหาเรา</h2>
+      <p>โทรปรึกษาฟรี นัดสำรวจหน้างาน หรือส่งแบบให้ทีมงานประเมินราคา พร้อมดูแลทุกโครงการ ตั้งแต่งานเล็กถึงงานใหญ่</p>
+      <p style="margin-top:12px">อีเมล <a href="mailto:phasinee2702@gmail.com" style="color:var(--lava);font-weight:600;text-decoration:none">phasinee2702@gmail.com</a></p>
+    </div>
+    <div class="call-card">
+      <div class="lab">โทรเลย · ปรึกษาฟรี</div>
+      <a class="tel num" href="tel:0944545516">094-454-5516</a>
+      <div class="mini">
+        <a href="tel:0944545516">📞 โทรออก</a>
+        <a href="mailto:phasinee2702@gmail.com">✉ อีเมล</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M4 14.5 L16 5 L28 14.5" stroke="#e01f26" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 13.5 V27 H25.5 V13.5" stroke="#e01f26" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 27 V19 H20 V27" stroke="#ff6a2b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div><b>WAREHOUSE BUILDER</b><span style="color:var(--gold)">รับสร้างโกดัง โรงงาน · ภูเก็ต</span></div>
+    </div>
+    <div class="fine">รับสร้างโกดัง โรงงาน โครงสร้างเหล็ก · มอก. รับรองมาตรฐาน · ภูเก็ต พังงา กระบี่ สุราษฎร์ นครศรีฯ · โทร 094-454-5516 · phasinee2702@gmail.com</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById("themeBtn");
+    function cur(){return root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");}
+    btn.addEventListener("click",function(){
+      var next=cur()==="dark"?"light":"dark";
+      root.setAttribute("data-theme",next);
+    });
+  })();
+</script>
